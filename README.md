@@ -1,24 +1,114 @@
 # Expense Tracker - Flutter Frontend
 
-A modern mobile expense tracking application built with Flutter, featuring authentication, expense management, AI-powered category suggestions, and comprehensive reporting.
+A comprehensive personal finance management application built with Flutter that helps users track their daily expenses, categorize spending, and gain insights into their financial habits through intelligent features and visual analytics.
 
-## Features
+## Purpose
 
-- 🔐 **Authentication**: Secure JWT-based authentication with login/register functionality
-- 💰 **Expense Management**: Full CRUD operations for expenses
-- 📊 **Reports & Charts**: Visual analytics with daily/weekly/monthly summaries (coming soon)
-- 🎨 **Modern UI**: Built with shadcn_ui for a clean, consistent design
-- 📱 **Responsive Design**: Works seamlessly across different screen sizes
+This expense tracker is designed to simplify personal financial management by providing:
+- **Effortless Expense Recording**: Quick and intuitive expense entry with smart categorization
+- **Financial Insights**: Clear visualization of spending patterns and trends
+- **Budget Awareness**: Understanding where your money goes to make informed financial decisions
+- **Secure Data Management**: Protected user data with robust authentication
 
-## Tech Stack
+## Key Features
 
-- **Framework**: Flutter 3.x
-- **State Management**: BLoC (flutter_bloc)
-- **UI Components**: shadcn_ui
-- **HTTP Client**: Dio with interceptors
-- **Charts**: fl_chart (ready for implementation)
-- **Local Storage**: flutter_secure_storage for JWT tokens
-- **Serialization**: json_serializable
+### 🔐 **Secure Authentication**
+- JWT-based authentication system
+- Secure token storage using flutter_secure_storage
+- User registration and login with session management
+- Auto-refresh token logic for seamless user experience
+
+### 💰 **Smart Expense Management**
+- **Quick Entry**: Add expenses with amount, description, category, and date
+- **CRUD Operations**: Full create, read, update, delete functionality
+- **Smart Categorization**: AI-powered category suggestions based on expense descriptions
+- **Filtering & Search**: Find expenses quickly with advanced filtering options
+- **Pull-to-Refresh**: Real-time data synchronization
+
+### 🤖 **AI-Powered Features**
+- **Category Prediction**: Automatic category suggestions using machine learning
+- **High Confidence Auto-fill**: Categories with >70% confidence are automatically selected
+- **Learning System**: Improves accuracy based on user patterns
+
+### 📊 **Analytics & Reporting** (Coming Soon)
+- Daily, weekly, and monthly spending summaries
+- Visual charts and graphs using fl_chart
+- Spending category breakdowns
+- Trend analysis and insights
+
+### 🎨 **Modern User Experience**
+- Clean, intuitive interface built with shadcn_ui
+- Responsive design for all screen sizes
+- Consistent design language
+- Smooth animations and transitions
+
+## Architecture
+
+### 🏗️ **Clean Architecture Pattern**
+The application follows clean architecture principles with clear separation of concerns:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Presentation Layer                       │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌──────────────┐ │
+│  │     Widgets     │  │     Screens     │  │     BLoC     │ │
+│  │   (UI Layer)    │  │  (Page Layer)   │  │ (State Mgmt) │ │
+│  └─────────────────┘  └─────────────────┘  └──────────────┘ │
+└─────────────────────────────────────────────────────────────┘
+                                │
+┌─────────────────────────────────────────────────────────────┐
+│                     Domain Layer                            │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌──────────────┐ │
+│  │     Models      │  │   Use Cases     │  │ Repositories │ │
+│  │ (Data Entities) │  │ (Business Logic)│  │ (Interfaces) │ │
+│  └─────────────────┘  └─────────────────┘  └──────────────┘ │
+└─────────────────────────────────────────────────────────────┘
+                                │
+┌─────────────────────────────────────────────────────────────┐
+│                      Data Layer                             │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌──────────────┐ │
+│  │   API Services  │  │ Local Storage   │  │   Providers  │ │
+│  │ (Remote Data)   │  │ (Cache/Tokens)  │  │(Data Sources)│ │
+│  └─────────────────┘  └─────────────────┘  └──────────────┘ │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 🧱 **State Management - BLoC Pattern**
+- **AuthBloc**: Manages authentication state, login/logout flows
+- **ExpenseBloc**: Handles expense CRUD operations and state
+- **ReportBloc**: Manages analytics and reporting (planned)
+- **Event-Driven**: Reactive programming with clear event/state flow
+
+### 🌐 **API Integration Architecture**
+- **Dio HTTP Client**: Robust HTTP client with interceptors
+- **Token Management**: Automatic JWT token attachment and refresh
+- **Error Handling**: Centralized error handling and user feedback
+- **Offline Support**: Local caching for improved user experience (planned)
+
+### 📱 **Tech Stack**
+
+**Frontend Framework**
+- **Flutter 3.x**: Cross-platform mobile development
+- **Dart**: Programming language
+
+**State Management**
+- **flutter_bloc**: Predictable state management with BLoC pattern
+- **Provider**: Dependency injection and state sharing
+
+**UI & Design**
+- **shadcn_ui**: Modern, consistent UI component library
+- **fl_chart**: Data visualization and charting
+- **Material Design 3**: Google's latest design system
+
+**Data & Storage**
+- **Dio**: HTTP client for API communication
+- **flutter_secure_storage**: Secure local storage for tokens
+- **json_serializable**: Automatic JSON serialization/deserialization
+
+**Development Tools**
+- **build_runner**: Code generation
+- **freezed**: Immutable classes and unions (planned)
+- **injectable**: Dependency injection (planned)
 
 ## Prerequisites
 
@@ -139,7 +229,3 @@ flutter test
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License.
